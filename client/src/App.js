@@ -15,6 +15,7 @@ const Container = styled.div`
   background-color: ${props => props.theme.bg};
   overflow: hidden;
   transition: all 0.2s ease;
+  
 `
 
 const App = () => {
