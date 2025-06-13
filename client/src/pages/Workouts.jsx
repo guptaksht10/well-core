@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import WorkoutCard from '../components/WorkoutCard'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
 
 const Container = styled.div`
   flex: 1;
@@ -72,6 +75,9 @@ const Workouts = () => {
       <Wrapper>
         <Left>
           <Title>Select Date</Title>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateCalendar/>
+          </LocalizationProvider>
         </Left>
         <Right>
           <Section>
