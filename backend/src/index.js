@@ -3,6 +3,8 @@ import * as dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";    
 
+import UserRoutes from "./routes/User.js";
+
 const app = express();
 dotenv.config();
 
@@ -12,7 +14,7 @@ app.use(cors({
 app.use(express.json({limit: "50mb"}));
 app.use(express.urlencoded({ extended: true }));
 
-// Error Handler 
+
 app.use((err, req, res, next) => {
     const status = err.status || 500;
     const message = err.message || "Something went wrong";
@@ -22,6 +24,9 @@ app.use((err, req, res, next) => {
         success: false
     })
 });
+
+app.use('/api/user', UserRoutes);
+
 
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
