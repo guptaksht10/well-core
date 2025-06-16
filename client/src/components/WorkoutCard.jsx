@@ -51,27 +51,28 @@ const Details = styled.div`
     gap: 6px;
     align-items: center;
 `
-
-const WorkoutCard = () => {
-  return (
-    <Card>
-        <Category>#Legs</Category>
-        <Name>Back Squat</Name>
+const WorkoutCard = ({ workout }) => {
+    return (
+      <Card>
+        <Category>#{workout?.category}</Category>
+        <Name>{workout?.workoutName}</Name>
         <Sets>
-            Count: 5sets X 10reps
+          Count: {workout?.sets} sets X {workout?.reps} reps
         </Sets>
         <Flex>
-            <Details>
-                <FitnessCenterRounded sx={{fontSize: "20px"}}/>
-                30Kg
-            </Details>
-            <Details>
-                <TimelapseRounded sx={{fontSize: "20px"}}/>
-                30Kg
-            </Details>
+          <Details>
+            <FitnessCenterRounded sx={{ fontSize: "20px" }} />
+            {workout?.weight} kg
+          </Details>
+          <Details>
+            <TimelapseRounded sx={{ fontSize: "20px" }} />
+            {workout?.duration} min
+          </Details>
         </Flex>
-    </Card>
-  )
-}
+      </Card>
+    );
+  };
+  
+  
 
 export default WorkoutCard

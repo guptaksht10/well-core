@@ -6,6 +6,7 @@ import Authentication from './pages/Authentication'
 import Navbar from './components/Navbar'
 import Workouts from './pages/Workouts'
 import Dashboard from './pages/Dashboard'
+import { useSelector } from 'react-redux'
 
 const Container = styled.div`
   display: flex;
@@ -19,13 +20,13 @@ const Container = styled.div`
 `
 
 const App = () => {
-  const [user, setUser] = useState(true) 
+  const {currentUser} = useSelector((state) => state.user); 
   return (
     <ThemeProvider theme={lightTheme}>
         <BrowserRouter>
-          {user ?   
+          {currentUser ?   
             (<Container>
-              <Navbar/>
+              <Navbar currentUser={currentUser}/>
               <Routes>
                 <Route path="/" element={<Dashboard/>} />
                 <Route path="/workouts" element={<Workouts/>} />

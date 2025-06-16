@@ -24,25 +24,32 @@ const Title = styled.div`
     font-weight: 800;
 `
 
-const AddWorkout = ({workout, setWorkout}) => {
+const AddWorkout = ({ workout, setWorkout, addNewWorkout, buttonLoading }) => {
   return (
     <Card>
         <Title>Add New Workout</Title>
         <TextInput
-            placeholder='Enter your workout here
-            #Category
-             -Workout Name,
-             -Sets
-             -Reps
-             -Weight
-             -Duration
-            '
-            textArea
-            rows={10}
-            value={workout}
-            handleChange={(e) => setWorkout(e.target.value)}
-        />
-        <Button text="Add Workout" small/>
+        label="Workout"
+        textArea
+        rows={10}
+        placeholder={`Enter in this format:
+
+#Category
+-Workout Name
+-Sets
+-Reps
+-Weight
+-Duration`}
+        value={workout}
+        handelChange={(e) => setWorkout(e.target.value)}
+      />
+      <Button
+        text="Add Workout"
+        small
+        onClick={() => addNewWorkout()}
+        isLoading={buttonLoading}
+        isDisabled={buttonLoading}
+      />
     </Card>
   )
 }
